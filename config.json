@@ -1,0 +1,5 @@
+{
+  "interval": 10,
+  "auto_start": false,
+  "inactivity_trigger": 1
+}
