@@ -8,12 +8,15 @@ def load_config():
             config = json.load(f)
         if "inactivity_trigger" not in config:
             config["inactivity_trigger"] = 4
+        if "enable_auto_trigger" not in config:
+            config["enable_auto_trigger"] = True
         return config
     except FileNotFoundError:
         return {
             "interval": 300,
             "auto_start": False,
-            "inactivity_trigger": 4
+            "inactivity_trigger": 4,
+            "enable_auto_trigger": True
         }
 
 def save_config(config):

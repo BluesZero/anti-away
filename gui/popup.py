@@ -1,46 +1,52 @@
-from PySide6.QtWidgets import QDialog, QLabel, QVBoxLayout, QPushButton
+from PySide6.QtWidgets import QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout
 from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QFont
 
-class NotificationPopup(QDialog):
-    def __init__(self, message):
+class NotificationPopup(QWidget):
+    def __init__(self, message="Anti-Away se activó automáticamente."):
         super().__init__()
-        self.setWindowFlags(Qt.FramelessWindowHint | Qt.Tool)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
+        self.setAttribute(Qt.WA_TranslucentBackground)
+        self.setFixedSize(320, 80)
+
         self.setStyleSheet("""
-            QDialog {
-                background-color: #1e1e1e;
-                border: 1px solid #888;
-                border-radius: 8px;
+            QWidget {
+                background-color: #262626;
+                color: white;
+                border-radius: 10px;
             }
             QLabel {
-                color: white;
                 font-size: 13px;
             }
             QPushButton {
-                background-color: #3a3a3a;
-                color: white;
-                padding: 4px 10px;
-                border-radius: 4px;
+                background: none;
+                border: none;
+                color: #ccc;
+                font-size: 14px;
             }
             QPushButton:hover {
-                background-color: #555;
+                color: red;
             }
         """)
-        self.setFixedSize(260, 100)
 
-        layout = QVBoxLayout()
-        self.label = QLabel(message)
-        self.label.setWordWrap(True)
+        label = QLabel(message)
+        label.setFont(QFont("Segoe UI", 10))
 
-        self.button = QPushButton("Cerrar")
-        self.button.clicked.connect(self.close)
+        close_btn = QPushButton("✕")
+        close_btn.setFixedSize(20, 20)
+        close_btn.clicked.connect(self.close)
 
-        layout.addWidget(self.label)
-        layout.addWidget(self.button, alignment=Qt.AlignRight)
-        self.setLayout(layout)
+        top = QHBoxLayout()
+        top.addWidget(label)
+        top.addStretch()
+        top.addWidget(close_btn)
 
-        self.move_to_bottom_right()
-        QTimer.singleShot(7000, self.close)
+        layout = QVBoxLayout(self)
+        layout.addLayout(top)
 
-    def move_to_bottom_right(self):
-        screen = self.screen().availableGeometry()
-        self.move(screen.width() - self.width() - 20, screen.height() - self.height() - 20)
+        QTimer.singleShot(6000, self.close)  # Cierra solo después de 6 segundos
+
+    def show(self):
+        screen_geometry = self.screen().availableGeometry()
+        self.move(screen_geometry.width() - self.width() - 20, screen_geometry.height() - self.height() - 40)
+        super().show()

@@ -2,6 +2,17 @@
 
 **Anti-Away** es una aplicación de escritorio que simula actividad del mouse en intervalos definidos para evitar que Microsoft Teams (u otros programas) te pongan como "ausente" automáticamente. También puede activarse tras un periodo de inactividad detectado del usuario.
 
+Este software ha sido desarrollado con fines de comodidad personal y productividad. Anti-Away puede ser útil en situaciones como:
+
+- Evitar bloqueos de pantalla durante presentaciones o reuniones largas.
+- Mantener procesos activos en segundo plano sin interrupciones automáticas.
+- Prevenir suspensiones del sistema en entornos controlados.
+
+**No está diseñado para ser utilizado como medio para evadir responsabilidades laborales ni engañar a sistemas de control de productividad sin consentimiento.**
+
+⚠️ El uso indebido de esta herramienta en entornos laborales o institucionales puede violar políticas internas. El usuario es responsable de verificar y respetar las normas de su entorno.
+
+> Anti-Away es una herramienta neutral. El uso ético y responsable depende exclusivamente del usuario.
 ---
 
 ## 🚀 Características

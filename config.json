@@ -1,5 +1,6 @@
 {
-  "interval": 370,
+  "interval": 300,
   "auto_start": false,
-  "inactivity_trigger": 6
+  "inactivity_trigger": 2,
+  "enable_auto_trigger": true
 }
